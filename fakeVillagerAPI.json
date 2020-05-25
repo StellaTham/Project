@@ -2,18 +2,7 @@
   "result": [
     {
       "id": 374,
-      "name": {
-        "name-en": "Rolf",
-        "name-cn": "朱穆朗",
-        "name-de": "Boris",
-        "name-es": "Albino",
-        "name-fr": "Ralf",
-        "name-it": "Rolf",
-        "name-jp": "チョモラン",
-        "name-kr": "호랭이",
-        "name-nl": "Rolf",
-        "name-ru": "Рольф"
-      },
+      "name": "Ralf",
       "personality": "Cranky",
       "birthday": "August 22nd",
       "species": "Tiger",
@@ -22,18 +11,7 @@
     },
     {
       "id": 107,
-      "name": {
-        "name-en": "Fuchsia",
-        "name-cn": "洁西卡",
-        "name-de": "Selina",
-        "name-es": "Rosalina",
-        "name-fr": "Rosanne",
-        "name-it": "Fuxia",
-        "name-jp": "ジェシカ",
-        "name-kr": "제시카",
-        "name-nl": "Fuchsia",
-        "name-ru": "Фукси"
-      },
+        "name": "Rosanne",
       "personality": "Uchi",
       "birthday": "September 19th",
       "species": "Deer",
@@ -42,18 +20,7 @@
     },
     {
       "id": 67,
-      "name": {
-        "name-en": "Poncho",
-        "name-cn": "蓬蓬",
-        "name-de": "Toni",
-        "name-es": "Poncho",
-        "name-fr": "Théo",
-        "name-it": "Poncho",
-        "name-jp": "ポンチョ",
-        "name-kr": "봉추",
-        "name-nl": "Poncho",
-        "name-ru": "Пончо"
-      },
+      "name": "Théo",
       "personality": "Jock",
       "birthday": "January 2nd",
       "species": "Cub",
@@ -62,18 +29,7 @@
     },
     {
       "id": 118,
-      "name": {
-        "name-en": "Daisy",
-        "name-cn": "香草",
-        "name-de": "Doris",
-        "name-es": "Luisa",
-        "name-fr": "Naomie",
-        "name-it": "Fiorella",
-        "name-jp": "バニラ",
-        "name-kr": "바닐라",
-        "name-nl": "Daisy",
-        "name-ru": "Дейзи"
-      },
+      "name": "Naomie",
       "personality": "Normal",
       "birthday": "November 16th",
       "species": "Dog",
@@ -82,18 +38,7 @@
     },
     {
       "id": 114,
-      "name": {
-        "name-en": "Biskit",
-        "name-cn": "罗宾",
-        "name-de": "Keks",
-        "name-es": "Amnesio",
-        "name-fr": "Crocket",
-        "name-it": "Buffetto",
-        "name-jp": "ロビン",
-        "name-kr": "로빈",
-        "name-nl": "Biskit",
-        "name-ru": "Бискит"
-      },
+      "name": "Crocket",
       "personality": "Lazy",
       "birthday": "May 13th",
       "species": "Dog",
@@ -102,18 +47,7 @@
     },
     {
       "id": 258,
-      "name": {
-        "name-en": "Candi",
-        "name-cn": "甘油",
-        "name-de": "Renate",
-        "name-es": "Chuchi",
-        "name-fr": "Sucrette",
-        "name-it": "Mella",
-        "name-jp": "かんゆ",
-        "name-kr": "사탕",
-        "name-nl": "Candi",
-        "name-ru": "Кэнди"
-      },
+      "name": "Sucrette",
       "personality": "Peppy",
       "birthday": "April 13th",
       "species": "Mouse",
@@ -122,18 +56,7 @@
     },
     {
       "id": 170,
-      "name": {
-        "name-en": "Croque",
-        "name-cn": "太子",
-        "name-de": "Carlo",
-        "name-es": "Ranolfo",
-        "name-fr": "Carlos",
-        "name-it": "Gracido",
-        "name-jp": "タイシ",
-        "name-kr": "투투",
-        "name-nl": "Croque",
-        "name-ru": "Крок"
-      },
+      "name": "Carlos",
       "personality": "Cranky",
       "birthday": "July 18th",
       "species": "Frog",
@@ -142,18 +65,7 @@
     },
     {
       "id": 42,
-      "name": {
-        "name-en": "Bob",
-        "name-cn": "阿判",
-        "name-de": "Jens",
-        "name-es": "Arándano",
-        "name-fr": "Robert",
-        "name-it": "Bob",
-        "name-jp": "ニコバン",
-        "name-kr": "히죽",
-        "name-nl": "Bob",
-        "name-ru": "Боб"
-      },
+      "name": "Robert",
       "personality": "Lazy",
       "birthday": "January 1st",
       "species": "Cat",
@@ -162,18 +74,7 @@
     },
     {
       "id": 194,
-      "name": {
-        "name-en": "Soleil",
-        "name-cn": "安安",
-        "name-de": "Samira",
-        "name-es": "Soraya",
-        "name-fr": "Stella",
-        "name-it": "Cettina",
-        "name-jp": "シャンティ",
-        "name-kr": "샨티",
-        "name-nl": "Soleil",
-        "name-ru": "Солей"
-      },
+      "name": "Stella",
       "personality": "Snooty",
       "birthday": "August 9th",
       "species": "Hamster",
@@ -182,18 +83,7 @@
     },
     {
       "id": 21,
-      "name": {
-        "name-en": "Klaus",
-        "name-cn": "熊战士",
-        "name-de": "Grischa",
-        "name-es": "Gruñerto",
-        "name-fr": "Klaus",
-        "name-it": "Maciste",
-        "name-jp": "クマロス",
-        "name-kr": "곰도로스",
-        "name-nl": "Klaus",
-        "name-ru": "Клаус"
-      },
+      "name": "Klaus",
       "personality": "Smug",
       "birthday": "March 31st",
       "species": "Bear",
@@ -202,18 +92,7 @@
     },
     {
       "id": 76,
-      "name": {
-        "name-en": "Pekoe",
-        "name-cn": "佳敏",
-        "name-de": "Sandrine",
-        "name-es": "Vera",
-        "name-fr": "Pauline",
-        "name-it": "Mina",
-        "name-jp": "ジャスミン",
-        "name-kr": "재스민",
-        "name-nl": "Pekoe",
-        "name-ru": "Пеко"
-      },
+      "name": "Pauline",
       "personality": "Normal",
       "birthday": "May 18th",
       "species": "Cub",
