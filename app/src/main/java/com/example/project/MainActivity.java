@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showList();
+
         makeApiCall();
     }
 
-    private void showList() {
+    private void showList(final List<Villager> villagerList) {
         recyclerView = findViewById(R.id.recycler_view);
         // use this setting to
         // improve performance if you know that changes
@@ -49,12 +49,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        final List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }
         // define an adapter
-        mAdapter = new ListAdapter(input);
+        mAdapter = new ListAdapter(villagerList);
         recyclerView.setAdapter(mAdapter);
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
@@ -66,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                        input.remove(viewHolder.getAdapterPosition());
+                        villagerList.remove(viewHolder.getAdapterPosition());
                         mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                     }
                 };
@@ -110,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestVillagerResponse> call, Response<RestVillagerResponse> response) {
                 if(response.isSuccessful() && response.body()!=null){
                     List<Villager> villagerList = response.body().getResults();
-                    Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
-                }
+                    showList(villagerList);
+                    }
             }
 
             @Override

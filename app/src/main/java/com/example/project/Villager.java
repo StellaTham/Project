@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Villager {
     Integer id;
-    Object name;
+    String name;
     String personality;
     String birthday;
     String species;
@@ -17,7 +17,7 @@ public class Villager {
     }
 
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
