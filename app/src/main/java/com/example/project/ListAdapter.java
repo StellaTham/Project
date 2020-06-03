@@ -1,11 +1,15 @@
 package com.example.project;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,12 +24,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         public TextView txtHeader;
         public TextView txtFooter;
         public View layout;
+        public ImageView villagerImage;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
             txtHeader = v.findViewById(R.id.firstLine);
             txtFooter = v.findViewById(R.id.secondLine);
+            villagerImage = v.findViewById(R.id.icon);
         }
     }
 
@@ -64,6 +70,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final Villager currentVillager = values.get(position);
+        String stringID = String.valueOf(currentVillager.getId());
+        String path = "http://acnhapi.com/v1/images/villagers/" + stringID;
+        //Log.d("TAG", path);
+       Picasso.get().load(path).into(holder.villagerImage);
         holder.txtHeader.setText(currentVillager.getName());
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +81,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 remove(position);
             }
         });
-
         holder.txtFooter.setText(currentVillager.getId().toString());
     }
 

@@ -107,11 +107,19 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        doYourUpdate();
+                    }
+                }
+        );
     }
 
     private void doYourUpdate() {
-        // TODO implement a refresh
-         // Disables the refresh icon
+        //TODO update on refresh
+        mySwipeRefreshLayout.setRefreshing(false);
     }
 
     private static final String BASE_URL = "https://raw.githubusercontent.com/StellaTham/Project/master/";
