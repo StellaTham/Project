@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Project</string>
+    <string name="onIsland_description">Currently on my island</string>
+    <string name="left_description">Left my island</string>
+    <string name="camping_description">Met in campsite</string>
+    <string name="mysteryIsland_description">Met on a mystery island</string>
+
 </resources>

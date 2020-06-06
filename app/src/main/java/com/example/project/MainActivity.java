@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout mySwipeRefreshLayout;
     private SharedPreferences sharedPreferences;
     private Gson gson;
+    public List<Integer> favoriteList;
+    public List<Integer> onIslandList;
+    public List<Integer> mysteryIslandList;
+    public List<Integer> leftList;
+    public List<Integer> campingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
