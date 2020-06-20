@@ -7,6 +7,7 @@ public class Constants {
     static String KEY_LEFT_LIST ="jsonLeftList";
     static String KEY_CAMPSITE_LIST ="jsonCampsiteList";
     static String KEY_ISLAND_LIST ="jsonIslandList";
+    static String KEY_VILLAGER = "villagerKey";
 
 
 }

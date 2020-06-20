@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout mySwipeRefreshLayout;
     private SharedPreferences sharedPreferences;
     public static Gson gson;
-    public List<Integer> favoriteList;
-    public List<Integer> onIslandList;
-    public List<Integer> mysteryIslandList;
-    public List<Integer> leftList;
-    public List<Integer> campingList;
+    public static List<Integer> favoriteList= new ArrayList<Integer>();
+    public static List<Integer> onIslandList = new ArrayList<Integer>();
+    public static List<Integer> mysteryIslandList= new ArrayList<Integer>();
+    public static List<Integer> leftList= new ArrayList<Integer>();
+    public static List<Integer> campingList= new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                 .apply();
         Toast.makeText(getApplicationContext(), "Villager list saved", Toast.LENGTH_SHORT).show();
     }
-    private void saveFavoriteList(List<Integer> favoriteList) {
+    public void saveFavoriteList(List<Integer> favoriteList) {
         String jsonString = gson.toJson(favoriteList);
         sharedPreferences
                 .edit()
@@ -193,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 .apply();
         Toast.makeText(getApplicationContext(), "Favorite list saved", Toast.LENGTH_SHORT).show();
     }
-    private void saveMysteryList(List<Integer> mysteryList) {
+    public void saveMysteryList(List<Integer> mysteryList) {
         String jsonString = gson.toJson(mysteryList);
         sharedPreferences
                 .edit()
@@ -201,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 .apply();
         Toast.makeText(getApplicationContext(), "Mystery list saved", Toast.LENGTH_SHORT).show();
     }
-    private void saveLeftList(List<Integer> leftList) {
+    public void saveLeftList(List<Integer> leftList) {
         String jsonString = gson.toJson(leftList);
         sharedPreferences
                 .edit()
@@ -209,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 .apply();
         Toast.makeText(getApplicationContext(), "Left list saved", Toast.LENGTH_SHORT).show();
     }
-    private void saveIslandList(List<Integer> islandList) {
+    public void saveIslandList(List<Integer> islandList) {
         String jsonString = gson.toJson(islandList);
         sharedPreferences
                 .edit()
@@ -217,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                 .apply();
         Toast.makeText(getApplicationContext(), "On island list saved", Toast.LENGTH_SHORT).show();
     }
-    private void saveCampsiteList(List<Integer> campsiteList) {
+    public void saveCampsiteList(List<Integer> campsiteList) {
         String jsonString = gson.toJson(campsiteList);
         sharedPreferences
                 .edit()
@@ -232,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToDetails(Villager villager){
         Intent myIntent = new Intent(MainActivity.this, DetailsActivity.class);
-        myIntent.putExtra("villagerKey", gson.toJson(villager)); //Optional parameters
+        myIntent.putExtra(Constants.KEY_VILLAGER, gson.toJson(villager)); //Optional parameters
         MainActivity.this.startActivity(myIntent);
         //Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
     }

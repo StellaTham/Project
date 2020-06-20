@@ -3,14 +3,14 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name ="crankyBackgroundColor">#969C9F</color>
-    <color name ="jockBackgroundColor">#FF703C</color>
-    <color name ="lazyBackgroundColor">#FDEE64</color>
-    <color name ="smugBackgroundColor">#965EF8</color>
-    <color name ="normalBackgroundColor">#80FF85</color>
-    <color name ="peppyBackgroundColor">#FF45A5</color>
+    <color name ="crankyBackgroundColor">#AEAFAF</color>
+    <color name ="jockBackgroundColor">#FFA16A</color>
+    <color name ="lazyBackgroundColor">#FDEF71</color>
+    <color name ="smugBackgroundColor">#B387FF</color>
+    <color name ="normalBackgroundColor">#AAFFAD</color>
+    <color name ="peppyBackgroundColor">#FF9ACE</color>
     <color name ="snootyBackgroundColor">#6779FF</color>
-    <color name ="uchiBackgroundColor">#FF1616</color>
+    <color name ="uchiBackgroundColor">#FF6565</color>
 
 
 
