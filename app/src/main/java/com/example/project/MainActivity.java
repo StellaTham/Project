@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private SwipeRefreshLayout mySwipeRefreshLayout;
     private SharedPreferences sharedPreferences;
-    private Gson gson;
+    public static Gson gson;
     public List<Integer> favoriteList;
     public List<Integer> onIslandList;
     public List<Integer> mysteryIslandList;
@@ -230,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigateToDetails(Villager villager){
-        Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(MainActivity.this, DetailsActivity.class);
+        myIntent.putExtra("villagerKey", gson.toJson(villager)); //Optional parameters
+        MainActivity.this.startActivity(myIntent);
+        //Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
     }
 }
