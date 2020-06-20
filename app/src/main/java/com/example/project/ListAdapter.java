@@ -1,6 +1,5 @@
 package com.example.project;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,11 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Villager> values;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Villager item);
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -46,9 +50,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<Villager> myDataset) {
-        values = myDataset;
+    public ListAdapter(List<Villager> myDataset, OnItemClickListener listener) {
+        this.values = myDataset;
+        this.listener = listener;
     }
+
 
     // Create new views (invoked by the layout manager)
     @Override
@@ -75,10 +81,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         //Log.d("TAG", path);
        Picasso.get().load(path).into(holder.villagerImage);
         holder.txtHeader.setText(currentVillager.getName());
-        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                listener.onItemClick(currentVillager);
             }
         });
         holder.txtFooter.setText(currentVillager.getId().toString());

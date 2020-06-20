@@ -1,7 +1,6 @@
 package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -16,7 +15,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -70,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private List<Integer> getFavoriteFromCache() {
+        String jsonFavorite = sharedPreferences.getString(Constants.KEY_FAVORITE_LIST, null);
+        if(jsonFavorite==null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Integer>>(){}.getType();
+            return gson.fromJson(jsonFavorite, listType);
+        }
+
+
+    }
+
+    //TODO others getXfromCache
+
     private void showList(final List<Villager> villagerList) {
         recyclerView = findViewById(R.id.recycler_view);
         // use this setting to
@@ -83,10 +95,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         // define an adapter
-        mAdapter = new ListAdapter(villagerList);
+        mAdapter = new ListAdapter(villagerList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Villager item) {
+                navigateToDetails(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
 
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
+        /*ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
                 new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
                     @Override
                     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder
@@ -100,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+        itemTouchHelper.attachToRecyclerView(recyclerView);*/
 
 
         mySwipeRefreshLayout = findViewById(R.id.swiperefresh);
@@ -120,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
     }
 
     private void doYourUpdate() {
@@ -145,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestVillagerResponse> call, Response<RestVillagerResponse> response) {
                 if(response.isSuccessful() && response.body()!=null){
                     List<Villager> villagerList = response.body().getResults();
-                    saveList(villagerList);
+                    saveVillagerList(villagerList);
                     showList(villagerList);
                     }
             }
@@ -158,16 +176,60 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void saveList(List<Villager> villagerList) {
+    private void saveVillagerList(List<Villager> villagerList) {
         String jsonString = gson.toJson(villagerList);
         sharedPreferences
                 .edit()
                 .putString(Constants.KEY_VILLAGER_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "List saved", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Villager list saved", Toast.LENGTH_SHORT).show();
+    }
+    private void saveFavoriteList(List<Integer> favoriteList) {
+        String jsonString = gson.toJson(favoriteList);
+        sharedPreferences
+                .edit()
+                .putString(Constants.KEY_FAVORITE_LIST, jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "Favorite list saved", Toast.LENGTH_SHORT).show();
+    }
+    private void saveMysteryList(List<Integer> mysteryList) {
+        String jsonString = gson.toJson(mysteryList);
+        sharedPreferences
+                .edit()
+                .putString(Constants.KEY_MYSTERY_LIST, jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "Mystery list saved", Toast.LENGTH_SHORT).show();
+    }
+    private void saveLeftList(List<Integer> leftList) {
+        String jsonString = gson.toJson(leftList);
+        sharedPreferences
+                .edit()
+                .putString(Constants.KEY_LEFT_LIST, jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "Left list saved", Toast.LENGTH_SHORT).show();
+    }
+    private void saveIslandList(List<Integer> islandList) {
+        String jsonString = gson.toJson(islandList);
+        sharedPreferences
+                .edit()
+                .putString(Constants.KEY_ISLAND_LIST, jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "On island list saved", Toast.LENGTH_SHORT).show();
+    }
+    private void saveCampsiteList(List<Integer> campsiteList) {
+        String jsonString = gson.toJson(campsiteList);
+        sharedPreferences
+                .edit()
+                .putString(Constants.KEY_CAMPSITE_LIST, jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "Campsite list saved", Toast.LENGTH_SHORT).show();
     }
 
     private void showError(){
         Toast.makeText(getApplicationContext(), "API Error", Toast.LENGTH_SHORT).show();
+    }
+
+    public void navigateToDetails(Villager villager){
+        Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
     }
 }
