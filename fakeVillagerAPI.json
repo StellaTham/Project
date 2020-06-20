@@ -7,7 +7,7 @@
       "birthday": "August 22nd",
       "species": "Tiger",
       "gender": "Male",
-      "catch-phrase": "grrrolf"
+      "catchphrase": "grrrolf"
     },
     {
       "id": 107,
@@ -16,7 +16,7 @@
       "birthday": "September 19th",
       "species": "Deer",
       "gender": "Female",
-      "catch-phrase": "precious"
+      "catchphrase": "precious"
     },
     {
       "id": 67,
@@ -25,7 +25,7 @@
       "birthday": "January 2nd",
       "species": "Cub",
       "gender": "Male",
-      "catch-phrase": "li'lbear"
+      "catchphrase": "li'lbear"
     },
     {
       "id": 118,
@@ -34,7 +34,7 @@
       "birthday": "November 16th",
       "species": "Dog",
       "gender": "Female",
-      "catch-phrase": "bow-WOW"
+      "catchphrase": "bow-WOW"
     },
     {
       "id": 114,
@@ -43,7 +43,7 @@
       "birthday": "May 13th",
       "species": "Dog",
       "gender": "Male",
-      "catch-phrase": "dawg"
+      "catchphrase": "dawg"
     },
     {
       "id": 258,
@@ -52,7 +52,7 @@
       "birthday": "April 13th",
       "species": "Mouse",
       "gender": "Female",
-      "catch-phrase": "sweetie"
+      "catchphrase": "sweetie"
     },
     {
       "id": 170,
@@ -61,7 +61,7 @@
       "birthday": "July 18th",
       "species": "Frog",
       "gender": "Male",
-      "catch-phrase": "asif"
+      "catchphrase": "asif"
     },
     {
       "id": 42,
@@ -70,7 +70,7 @@
       "birthday": "January 1st",
       "species": "Cat",
       "gender": "Male",
-      "catch-phrase": "pthhpth"
+      "catchphrase": "pthhpth"
     },
     {
       "id": 194,
@@ -79,7 +79,7 @@
       "birthday": "August 9th",
       "species": "Hamster",
       "gender": "Female",
-      "catch-phrase": "tarnation"
+      "catchphrase": "tarnation"
     },
     {
       "id": 21,
@@ -88,7 +88,7 @@
       "birthday": "March 31st",
       "species": "Bear",
       "gender": "Male",
-      "catch-phrase": "strudel"
+      "catchphrase": "strudel"
     },
     {
       "id": 76,
@@ -97,7 +97,7 @@
       "birthday": "May 18th",
       "species": "Cub",
       "gender": "Female",
-      "catch-phrase": "bud"
+      "catchphrase": "bud"
     }
   ]
 }
