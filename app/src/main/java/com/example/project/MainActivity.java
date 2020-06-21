@@ -8,7 +8,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -28,10 +31,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ListAdapter mAdapter;
+    public static ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private SwipeRefreshLayout mySwipeRefreshLayout;
-    private SharedPreferences sharedPreferences;
+    private boolean darkMode = false;
+    private static SharedPreferences sharedPreferences;
     public static Gson gson;
     public static List<Integer> favoriteList= new ArrayList<Integer>();
     public static List<Integer> onIslandList = new ArrayList<Integer>();
@@ -49,6 +53,27 @@ public class MainActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
         List<Villager> villagerList = getDataFromCache();
+        favoriteList = getFavoriteFromCache();
+        if(favoriteList==null){
+            favoriteList= new ArrayList<Integer>();
+        }
+        leftList = getLeftFromCache();
+        if(leftList==null){
+            leftList= new ArrayList<Integer>();
+        }
+        onIslandList = getIslandFromCache();
+        if(onIslandList==null){
+            onIslandList= new ArrayList<Integer>();
+        }
+        mysteryIslandList = getMysteryFromCache();
+        if(mysteryIslandList==null){
+            mysteryIslandList= new ArrayList<Integer>();
+        }
+        campingList = getCampsiteFromCache();
+        if(campingList==null){
+            campingList= new ArrayList<Integer>();
+        }
+
         if(villagerList !=null) {
             showList(villagerList);
         }else{
@@ -72,6 +97,50 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Integer> getFavoriteFromCache() {
         String jsonFavorite = sharedPreferences.getString(Constants.KEY_FAVORITE_LIST, null);
+        if(jsonFavorite==null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Integer>>(){}.getType();
+            return gson.fromJson(jsonFavorite, listType);
+        }
+
+
+    }
+    private List<Integer> getCampsiteFromCache() {
+        String jsonFavorite = sharedPreferences.getString(Constants.KEY_CAMPSITE_LIST, null);
+        if(jsonFavorite==null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Integer>>(){}.getType();
+            return gson.fromJson(jsonFavorite, listType);
+        }
+
+
+    }
+    private List<Integer> getLeftFromCache() {
+        String jsonFavorite = sharedPreferences.getString(Constants.KEY_LEFT_LIST, null);
+        if(jsonFavorite==null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Integer>>(){}.getType();
+            return gson.fromJson(jsonFavorite, listType);
+        }
+
+
+    }
+    private List<Integer> getMysteryFromCache() {
+        String jsonFavorite = sharedPreferences.getString(Constants.KEY_MYSTERY_LIST, null);
+        if(jsonFavorite==null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Integer>>(){}.getType();
+            return gson.fromJson(jsonFavorite, listType);
+        }
+
+
+    }
+    private List<Integer> getIslandFromCache() {
+        String jsonFavorite = sharedPreferences.getString(Constants.KEY_ISLAND_LIST, null);
         if(jsonFavorite==null){
             return null;
         }else{
@@ -143,8 +212,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doYourUpdate() {
-        //TODO update on refresh
-        mySwipeRefreshLayout.setRefreshing(false);
+
+        /*RelativeLayout layout = findViewById(R.id.rowLayout);
+        TextView nameText = findViewById(R.id.firstLine);
+        TextView favoriteText = findViewById(R.id.secondLine);
+        if(darkMode == false){
+            darkMode = true;
+            layout.setBackgroundColor(Color.BLACK);
+            nameText.setTextColor(Color.WHITE);
+            favoriteText.setTextColor(Color.WHITE);
+
+        }
+        if(darkMode == true){
+            darkMode = false;
+            layout.setBackgroundColor(Color.WHITE);
+            nameText.setTextColor(Color.DKGRAY);
+            favoriteText.setTextColor(Color.DKGRAY);
+        }
+        recyclerView.invalidate();
+
+        mySwipeRefreshLayout.setRefreshing(false);*/
     }
 
     private static final String BASE_URL = "https://raw.githubusercontent.com/StellaTham/Project/master/";
@@ -186,45 +273,40 @@ public class MainActivity extends AppCompatActivity {
                 .apply();
         Toast.makeText(getApplicationContext(), "Villager list saved", Toast.LENGTH_SHORT).show();
     }
-    public void saveFavoriteList(List<Integer> favoriteList) {
+    public static void saveFavoriteList(List<Integer> favoriteList) {
         String jsonString = gson.toJson(favoriteList);
         sharedPreferences
                 .edit()
                 .putString(Constants.KEY_FAVORITE_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "Favorite list saved", Toast.LENGTH_SHORT).show();
     }
-    public void saveMysteryList(List<Integer> mysteryList) {
+    public static void saveMysteryList(List<Integer> mysteryList) {
         String jsonString = gson.toJson(mysteryList);
         sharedPreferences
                 .edit()
                 .putString(Constants.KEY_MYSTERY_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "Mystery list saved", Toast.LENGTH_SHORT).show();
     }
-    public void saveLeftList(List<Integer> leftList) {
+    public static void saveLeftList(List<Integer> leftList) {
         String jsonString = gson.toJson(leftList);
         sharedPreferences
                 .edit()
                 .putString(Constants.KEY_LEFT_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "Left list saved", Toast.LENGTH_SHORT).show();
     }
-    public void saveIslandList(List<Integer> islandList) {
+    public static void saveIslandList(List<Integer> islandList) {
         String jsonString = gson.toJson(islandList);
         sharedPreferences
                 .edit()
                 .putString(Constants.KEY_ISLAND_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "On island list saved", Toast.LENGTH_SHORT).show();
     }
-    public void saveCampsiteList(List<Integer> campsiteList) {
+    public static void saveCampsiteList(List<Integer> campsiteList) {
         String jsonString = gson.toJson(campsiteList);
         sharedPreferences
                 .edit()
                 .putString(Constants.KEY_CAMPSITE_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "Campsite list saved", Toast.LENGTH_SHORT).show();
     }
 
     private void showError(){

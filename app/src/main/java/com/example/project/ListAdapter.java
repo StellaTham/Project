@@ -87,7 +87,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 listener.onItemClick(currentVillager);
             }
         });
-        holder.txtFooter.setText(currentVillager.getId().toString());
+        if(MainActivity.favoriteList.contains(new Integer(currentVillager.getId()))){
+            holder.txtFooter.setText(R.string.favoriteText);
+        }else{
+            holder.txtFooter.setText(" ");
+        }
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

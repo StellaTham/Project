@@ -4,5 +4,7 @@
     <string name="left_description">Left my island</string>
     <string name="camping_description">Met in campsite</string>
     <string name="mysteryIsland_description">Met on a mystery island</string>
+    <string name="favorite">Set as favorite</string>
+    <string name="favoriteText">FAVORITE ♥</string>
 
 </resources>
