@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project.R;
+import com.example.project.presentation.controller.MainController;
 import com.example.project.presentation.model.Villager;
 import com.squareup.picasso.Picasso;
 
@@ -82,7 +83,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         final Villager currentVillager = values.get(position);
         String stringID = String.valueOf(currentVillager.getId());
         String path = "http://acnhapi.com/v1/images/villagers/" + stringID;
-        //Log.d("TAG", path);
        Picasso.get().load(path).into(holder.villagerImage);
         holder.txtHeader.setText(currentVillager.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 listener.onItemClick(currentVillager);
             }
         });
-        if(MainActivity.favoriteList.contains(new Integer(currentVillager.getId()))){
+        if(MainController.favoriteList.contains(new Integer(currentVillager.getId()))){
             holder.txtFooter.setText(R.string.favoriteText);
         }else{
             holder.txtFooter.setText(" ");

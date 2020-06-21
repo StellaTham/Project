@@ -16,14 +16,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.project.data.Constants;
 import com.example.project.R;
+import com.example.project.presentation.controller.MainController;
 import com.example.project.presentation.model.Villager;
 import com.squareup.picasso.Picasso;
 
-import static com.example.project.presentation.view.MainActivity.campingList;
-import static com.example.project.presentation.view.MainActivity.favoriteList;
-import static com.example.project.presentation.view.MainActivity.leftList;
-import static com.example.project.presentation.view.MainActivity.mysteryIslandList;
-import static com.example.project.presentation.view.MainActivity.onIslandList;
+import static com.example.project.presentation.controller.MainController.campingList;
+import static com.example.project.presentation.controller.MainController.favoriteList;
+import static com.example.project.presentation.controller.MainController.leftList;
+import static com.example.project.presentation.controller.MainController.mysteryIslandList;
+import static com.example.project.presentation.controller.MainController.onIslandList;
 
 public class DetailsActivity extends AppCompatActivity {
     private TextView villagerName;
@@ -59,7 +60,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String villagerJson = intent.getStringExtra(Constants.KEY_VILLAGER);
-        Villager villager = MainActivity.gson.fromJson(villagerJson, Villager.class);
+        Villager villager = MainController.gson.fromJson(villagerJson, Villager.class);
         villagerID = villager.getId();
 
         favoriteSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -68,12 +69,12 @@ public class DetailsActivity extends AppCompatActivity {
                 if(isChecked){
                     favoriteList.add(villagerID);
                     MainActivity.mAdapter.notifyDataSetChanged();
-                    MainActivity.saveFavoriteList(favoriteList);
+                    MainController.saveFavoriteList(favoriteList);
                 }
                 if(!isChecked){
                     favoriteList.remove(new Integer(villagerID));
                     MainActivity.mAdapter.notifyDataSetChanged();
-                    MainActivity.saveFavoriteList(favoriteList);
+                    MainController.saveFavoriteList(favoriteList);
                 }
             }
         });
@@ -115,7 +116,7 @@ public class DetailsActivity extends AppCompatActivity {
             favoriteSwitch.setChecked(true);
             favoriteList.remove(Integer.valueOf(villagerID));
             MainActivity.mAdapter.notifyDataSetChanged();
-            MainActivity.saveFavoriteList(favoriteList);
+            MainController.saveFavoriteList(favoriteList);
         }
         int myColor = Color.WHITE;
         switch(villager.getPersonality()){
@@ -156,41 +157,41 @@ public class DetailsActivity extends AppCompatActivity {
             case R.id.campingCheckBox:
                 if (checked) {
                     campingList.add(villagerID);
-                    MainActivity.saveCampsiteList(campingList);
+                    MainController.saveCampsiteList(campingList);
                 }else{
                     campingList.remove(Integer.valueOf(villagerID));
-                    MainActivity.saveCampsiteList(campingList);
+                    MainController.saveCampsiteList(campingList);
                 }
                 break;
             case R.id.leftCheckBox:
                 if (checked) {
                     leftList.add(villagerID);
                     islandCheck.setEnabled(false);
-                    MainActivity.saveLeftList(leftList);
+                    MainController.saveLeftList(leftList);
                 }else{
                     leftList.remove(Integer.valueOf(villagerID));
                     islandCheck.setEnabled(true);
-                    MainActivity.saveLeftList(leftList);
+                    MainController.saveLeftList(leftList);
                 }
                 break;
             case R.id.onIslandCheckBox:
                 if (checked) {
                     onIslandList.add(villagerID);
                     leftCheck.setEnabled(false);
-                    MainActivity.saveIslandList(onIslandList);
+                    MainController.saveIslandList(onIslandList);
                 }else{
                     onIslandList.remove(Integer.valueOf(villagerID));
                     leftCheck.setEnabled(true);
-                    MainActivity.saveIslandList(onIslandList);
+                    MainController.saveIslandList(onIslandList);
                 }
                 break;
             case R.id.mysteryIslandCheckBox:
                 if (checked) {
                     mysteryIslandList.add(villagerID);
-                    MainActivity.saveMysteryList(mysteryIslandList);
+                    MainController.saveMysteryList(mysteryIslandList);
                 }else{
                     mysteryIslandList.remove(Integer.valueOf(villagerID));
-                    MainActivity.saveMysteryList(mysteryIslandList);
+                    MainController.saveMysteryList(mysteryIslandList);
                 }
                 break;
         }

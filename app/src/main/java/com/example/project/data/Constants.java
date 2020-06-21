@@ -8,6 +8,8 @@ public class Constants {
     public static String KEY_CAMPSITE_LIST ="jsonCampsiteList";
     public static String KEY_ISLAND_LIST ="jsonIslandList";
     public static String KEY_VILLAGER = "villagerKey";
+    public static final String BASE_URL = "https://raw.githubusercontent.com/StellaTham/Project/master/";
+
 
 
 }
