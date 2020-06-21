@@ -1,6 +1,5 @@
 package com.example.project;
 
-import java.util.List;
 
 public class Villager {
     Integer id;

@@ -6,5 +6,14 @@
     <string name="mysteryIsland_description">Met on a mystery island</string>
     <string name="favorite">Set as favorite</string>
     <string name="favoriteText">FAVORITE ♥</string>
+    <string name="rowItemImageDescription">Image of the corresponding villager</string>
+    <string name="villagerName">Name</string>
+    <string name="villagerPersoSpec">A -personnality- -species-!</string>
+    <string name="villagerGenderBirth">Dont\' forget their birthday on XX/YY!</string>
+    <string name="villagerCatchphrase">catchphrase</string>
+    <string name="tom_nook_face">Tom Nook face</string>
+    <string name="dodo_airlines_logo">Dodo airlines logo</string>
+    <string name="carboard_box">Carboard box when moving out</string>
+    <string name="campsite">Campsite image</string>
 
 </resources>

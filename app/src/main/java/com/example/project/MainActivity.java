@@ -37,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean darkMode = false;
     private static SharedPreferences sharedPreferences;
     public static Gson gson;
-    public static List<Integer> favoriteList= new ArrayList<Integer>();
-    public static List<Integer> onIslandList = new ArrayList<Integer>();
-    public static List<Integer> mysteryIslandList= new ArrayList<Integer>();
-    public static List<Integer> leftList= new ArrayList<Integer>();
-    public static List<Integer> campingList= new ArrayList<Integer>();
+    public static List<Integer> favoriteList= new ArrayList<>();
+    public static List<Integer> onIslandList = new ArrayList<>();
+    public static List<Integer> mysteryIslandList= new ArrayList<>();
+    public static List<Integer> leftList= new ArrayList<>();
+    public static List<Integer> campingList= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,23 +55,23 @@ public class MainActivity extends AppCompatActivity {
         List<Villager> villagerList = getDataFromCache();
         favoriteList = getFavoriteFromCache();
         if(favoriteList==null){
-            favoriteList= new ArrayList<Integer>();
+            favoriteList= new ArrayList<>();
         }
         leftList = getLeftFromCache();
         if(leftList==null){
-            leftList= new ArrayList<Integer>();
+            leftList= new ArrayList<>();
         }
         onIslandList = getIslandFromCache();
         if(onIslandList==null){
-            onIslandList= new ArrayList<Integer>();
+            onIslandList= new ArrayList<>();
         }
         mysteryIslandList = getMysteryFromCache();
         if(mysteryIslandList==null){
-            mysteryIslandList= new ArrayList<Integer>();
+            mysteryIslandList= new ArrayList<>();
         }
         campingList = getCampsiteFromCache();
         if(campingList==null){
-            campingList= new ArrayList<Integer>();
+            campingList= new ArrayList<>();
         }
 
         if(villagerList !=null) {
@@ -151,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //TODO others getXfromCache
 
     private void showList(final List<Villager> villagerList) {
         recyclerView = findViewById(R.id.recycler_view);
@@ -173,23 +172,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(mAdapter);
-
-        /*ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
-                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-                    @Override
-                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder
-                            target) {
-                        return false;
-                    }
-                    @Override
-                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                        villagerList.remove(viewHolder.getAdapterPosition());
-                        mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                    }
-                };
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);*/
-
 
         mySwipeRefreshLayout = findViewById(R.id.swiperefresh);
         mySwipeRefreshLayout.setOnRefreshListener(
@@ -230,8 +212,8 @@ public class MainActivity extends AppCompatActivity {
             favoriteText.setTextColor(Color.DKGRAY);
         }
         recyclerView.invalidate();
-
-        mySwipeRefreshLayout.setRefreshing(false);*/
+*/
+        mySwipeRefreshLayout.setRefreshing(false);
     }
 
     private static final String BASE_URL = "https://raw.githubusercontent.com/StellaTham/Project/master/";
@@ -271,7 +253,6 @@ public class MainActivity extends AppCompatActivity {
                 .edit()
                 .putString(Constants.KEY_VILLAGER_LIST, jsonString)
                 .apply();
-        Toast.makeText(getApplicationContext(), "Villager list saved", Toast.LENGTH_SHORT).show();
     }
     public static void saveFavoriteList(List<Integer> favoriteList) {
         String jsonString = gson.toJson(favoriteList);
@@ -317,6 +298,5 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, DetailsActivity.class);
         myIntent.putExtra(Constants.KEY_VILLAGER, gson.toJson(villager)); //Optional parameters
         MainActivity.this.startActivity(myIntent);
-        //Toast.makeText(getApplicationContext(), "TODO NAVIGATE", Toast.LENGTH_SHORT).show();
     }
 }

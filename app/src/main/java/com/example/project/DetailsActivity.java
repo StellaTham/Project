@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -60,13 +60,14 @@ public class DetailsActivity extends AppCompatActivity {
         villagerID = villager.getId();
 
         favoriteSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("UseValueOf")
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked==true){
+                if(isChecked){
                     favoriteList.add(villagerID);
                     MainActivity.mAdapter.notifyDataSetChanged();
                     MainActivity.saveFavoriteList(favoriteList);
                 }
-                if(isChecked==false){
+                if(!isChecked){
                     favoriteList.remove(new Integer(villagerID));
                     MainActivity.mAdapter.notifyDataSetChanged();
                     MainActivity.saveFavoriteList(favoriteList);
@@ -76,6 +77,7 @@ public class DetailsActivity extends AppCompatActivity {
         showDetails(villager);
     }
 
+    @SuppressLint("SetTextI18n")
     private void showDetails(Villager villager) {
         villagerName.setText(villager.getName());
         villagerCatchphrase.setText("\""+villager.getCatchphrase()+"\"");
@@ -92,23 +94,23 @@ public class DetailsActivity extends AppCompatActivity {
         String stringID = String.valueOf(villager.getId());
         String path = "http://acnhapi.com/v1/images/villagers/" + stringID;
         Picasso.get().load(path).into(villagerImage);
-        if(campingList.contains(new Integer(villagerID))){
+        if(campingList.contains(villagerID)){
             campingCheck.setChecked(true);
         }
-        if(leftList.contains(new Integer(villagerID))){
+        if(leftList.contains(villagerID)){
             leftCheck.setChecked(true);
             islandCheck.setEnabled(false);
         }
-        if(onIslandList.contains(new Integer(villagerID))){
+        if(onIslandList.contains(villagerID)){
             islandCheck.setChecked(true);
             leftCheck.setEnabled(false);
         }
-        if(mysteryIslandList.contains(new Integer(villagerID))){
+        if(mysteryIslandList.contains(villagerID)){
             mysteryCheck.setChecked(true);
         }
-        if(favoriteList.contains(new Integer(villagerID))){
+        if(favoriteList.contains(villagerID)){
             favoriteSwitch.setChecked(true);
-            favoriteList.remove(new Integer(villagerID));
+            favoriteList.remove(Integer.valueOf(villagerID));
             MainActivity.mAdapter.notifyDataSetChanged();
             MainActivity.saveFavoriteList(favoriteList);
         }
@@ -153,7 +155,7 @@ public class DetailsActivity extends AppCompatActivity {
                     campingList.add(villagerID);
                     MainActivity.saveCampsiteList(campingList);
                 }else{
-                    campingList.remove(new Integer(villagerID));
+                    campingList.remove(Integer.valueOf(villagerID));
                     MainActivity.saveCampsiteList(campingList);
                 }
                 break;
@@ -163,7 +165,7 @@ public class DetailsActivity extends AppCompatActivity {
                     islandCheck.setEnabled(false);
                     MainActivity.saveLeftList(leftList);
                 }else{
-                    leftList.remove(new Integer(villagerID));
+                    leftList.remove(Integer.valueOf(villagerID));
                     islandCheck.setEnabled(true);
                     MainActivity.saveLeftList(leftList);
                 }
@@ -174,7 +176,7 @@ public class DetailsActivity extends AppCompatActivity {
                     leftCheck.setEnabled(false);
                     MainActivity.saveIslandList(onIslandList);
                 }else{
-                    onIslandList.remove(new Integer(villagerID));
+                    onIslandList.remove(Integer.valueOf(villagerID));
                     leftCheck.setEnabled(true);
                     MainActivity.saveIslandList(onIslandList);
                 }
@@ -184,7 +186,7 @@ public class DetailsActivity extends AppCompatActivity {
                     mysteryIslandList.add(villagerID);
                     MainActivity.saveMysteryList(mysteryIslandList);
                 }else{
-                    mysteryIslandList.remove(new Integer(villagerID));
+                    mysteryIslandList.remove(Integer.valueOf(villagerID));
                     MainActivity.saveMysteryList(mysteryIslandList);
                 }
                 break;
