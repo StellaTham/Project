@@ -1,4 +1,6 @@
-package com.example.project;
+package com.example.project.presentation.model;
+
+import com.example.project.presentation.model.Villager;
 
 import java.util.List;
 

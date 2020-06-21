@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.presentation.view;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project.R;
+import com.example.project.presentation.model.Villager;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

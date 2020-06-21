@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.presentation.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,13 +14,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.project.data.Constants;
+import com.example.project.R;
+import com.example.project.presentation.model.Villager;
 import com.squareup.picasso.Picasso;
 
-import static com.example.project.MainActivity.campingList;
-import static com.example.project.MainActivity.favoriteList;
-import static com.example.project.MainActivity.leftList;
-import static com.example.project.MainActivity.mysteryIslandList;
-import static com.example.project.MainActivity.onIslandList;
+import static com.example.project.presentation.view.MainActivity.campingList;
+import static com.example.project.presentation.view.MainActivity.favoriteList;
+import static com.example.project.presentation.view.MainActivity.leftList;
+import static com.example.project.presentation.view.MainActivity.mysteryIslandList;
+import static com.example.project.presentation.view.MainActivity.onIslandList;
 
 public class DetailsActivity extends AppCompatActivity {
     private TextView villagerName;
@@ -90,7 +93,7 @@ public class DetailsActivity extends AppCompatActivity {
             pronoun = "her";
         }
 
-        villagerGenderBirthday.setText("Dont forget "+pronoun+" birthday on "+villager.getBirthday());
+        villagerGenderBirthday.setText( "Dont forget "+pronoun+" birthday on "+villager.getBirthday());
         String stringID = String.valueOf(villager.getId());
         String path = "http://acnhapi.com/v1/images/villagers/" + stringID;
         Picasso.get().load(path).into(villagerImage);
